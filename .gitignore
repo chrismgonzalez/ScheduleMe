@@ -37,5 +37,5 @@ hs_err_pid*
 .idea/uiDesigner.xml
 .idea/vcs.xml
 C195.iml
-
-/out/
+/lib
+/out
