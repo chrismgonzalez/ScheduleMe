@@ -38,4 +38,4 @@ hs_err_pid*
 .idea/vcs.xml
 C195.iml
 
-out/
+/out/
