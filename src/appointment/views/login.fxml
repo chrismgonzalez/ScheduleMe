@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.controllers.loginController">
+   <children>
+      <Label alignment="CENTER" layoutX="171.0" layoutY="71.0" text="ScheduleMe" textAlignment="CENTER">
+         <font>
+            <Font name="Agency FB" size="39.0" />
+         </font>
+      </Label>
+      <Label fx:id="userNameLabel" alignment="CENTER" layoutX="85.0" layoutY="153.0" prefHeight="31.0" prefWidth="138.0" text="Username:" textAlignment="CENTER">
+         <font>
+            <Font name="Agency FB" size="32.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userNameField" layoutX="223.0" layoutY="149.0" prefHeight="40.0" prefWidth="181.0" />
+      <Label fx:id="passwordLabel" alignment="CENTER" layoutX="85.0" layoutY="218.0" prefHeight="31.0" prefWidth="138.0" text="Password:" textAlignment="CENTER">
+         <font>
+            <Font name="Agency FB" size="29.0" />
+         </font>
+      </Label>
+      <TextField fx:id="passwordField" layoutX="223.0" layoutY="216.0" prefHeight="40.0" prefWidth="181.0" />
+      <Button fx:id="loginButton" onKeyReleased="#handleKeyReleased" layoutX="153.0" layoutY="278.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="195.0" text="Login" onAction="#onLogin">
+         <font>
+            <Font name="Agency FB" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
