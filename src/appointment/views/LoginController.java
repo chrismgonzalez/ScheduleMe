@@ -8,6 +8,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 import appointment.models.UserDB;
+import appointment.utils.Database;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,6 +44,8 @@ public class LoginController implements Initializable {
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
         boolean validUser = UserDB.login(username, password);
+        boolean nullCredentials = (username.equals("") || password.equals(""));
+
         if(validUser) {
             ((Node) (event.getSource())).getScene().getWindow().hide();
             Stage stage = new Stage();
@@ -50,7 +53,18 @@ public class LoginController implements Initializable {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+            Database.connect();
+
+        } if(nullCredentials) {
+            Database.disconnect();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("null credentials");
+            alert.setHeaderText(errorHeader);
+            alert.setContentText(errorText);
+            alert.showAndWait();
+
         } else {
+            Database.disconnect();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle(errorTitle);
             alert.setHeaderText(errorHeader);
@@ -63,7 +77,6 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Locale locale = Locale.getDefault();
-        System.out.println(locale);
         rb = ResourceBundle.getBundle("appointment.resources/login", locale);
 
         usernameLabel.setText(rb.getString("username"));

@@ -23,8 +23,6 @@ public class MainApp extends Application {
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException, Exception {
 
-        Database.connect();
         launch(args);
-        Database.disconnect();
     }
 }

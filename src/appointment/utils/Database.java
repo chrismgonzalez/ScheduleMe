@@ -35,6 +35,7 @@ public class Database {
         catch(ClassNotFoundException | SQLException e)
         {
             e.printStackTrace();
+            System.out.println("Not Connected");
         }
         return conn;
     }
