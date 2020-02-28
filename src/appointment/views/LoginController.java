@@ -1,34 +1,31 @@
 package appointment.views;
 
 
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
+
+import appointment.models.UserDB;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-
-import java.net.URL;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import javafx.stage.Stage;
 
 
-public class loginController implements Initializable {
+public class LoginController implements Initializable {
 
     @FXML
     private TextField usernameTxt;
     @FXML
     private PasswordField passwordTxt;
-    @FXML
-    private AnchorPane errorPane;
-    @FXML
-    private Label mainMessage;
-    @FXML
-    private Label languageMessage;
     @FXML
     private Label usernameLabel;
     @FXML
@@ -40,11 +37,29 @@ public class loginController implements Initializable {
     private String errorTitle;
     private String errorText;
 
+    //login to application
     @FXML
-    public void handleLogin() {
-        System.out.println("Logged In!");
+    public void handleLogin(ActionEvent event) throws IOException {
+        String username = usernameTxt.getText();
+        String password = passwordTxt.getText();
+        boolean validUser = UserDB.login(username, password);
+        if(validUser) {
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+            Stage stage = new Stage();
+            Parent root = FXMLLoader.load(getClass().getResource("Navigation.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle(errorTitle);
+            alert.setHeaderText(errorHeader);
+            alert.setContentText(errorText);
+            alert.showAndWait();
+        }
     }
 
+    //get and change the locale
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Locale locale = Locale.getDefault();
@@ -54,8 +69,6 @@ public class loginController implements Initializable {
         usernameLabel.setText(rb.getString("username"));
         passwordLabel.setText(rb.getString("password"));
         loginButton.setText(rb.getString("login"));
-        mainMessage.setText(rb.getString("message"));
-        languageMessage.setText(rb.getString("language"));
         errorHeader = rb.getString("errorHeader");
         errorTitle = rb.getString("errorTitle");
         errorText = rb.getString("errorText");

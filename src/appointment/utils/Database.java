@@ -1,10 +1,10 @@
-package appointment.DAO;
+package appointment.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBUtils {
+public class Database {
     // JDBC URL parts
     private static final String protocol = "jdbc";
     private static final String vendor = ":mysql:";
@@ -18,15 +18,17 @@ public class DBUtils {
     private static final String MYSQLJDBCDriver = "com.mysql.jdbc.Driver";
     private static Connection conn = null;
 
-    private static final String username = "U0676g"; //Username
+    private static final String userName = "U0676g"; //Username
     private static final String password = "53688693143"; //password
 
-    //connect to the database on application launch
-    public static Connection startConnection()
+    public Database() {};
+
+    //start a DB connection
+    public static Connection connect()
     {
         try{
             Class.forName(MYSQLJDBCDriver);
-            conn = (Connection)DriverManager.getConnection(jdbcURL, username, password);
+            conn = (Connection)DriverManager.getConnection(jdbcURL, userName, password);
             System.out.println("Connection successful!");
 
         }
@@ -37,11 +39,11 @@ public class DBUtils {
         return conn;
     }
     //close connection to the database when the application window closes
-    public static void closeConnection()
+    public static void disconnect()
     {
         try {
             conn.close();
-            System.out.println("Connection closed!");
+            System.out.println("Disconnected from database!");
         }
         catch (SQLException e) {
             e.printStackTrace();
