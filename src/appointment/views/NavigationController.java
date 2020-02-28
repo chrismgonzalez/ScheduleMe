@@ -25,6 +25,34 @@ public class NavigationController implements Initializable {
     }
 
     @FXML
+    public void handleAddAppointment() {
+        System.out.println("add appointment button clicked!");
+    }
+
+    @FXML
+    public void handleEditAppointment() {
+        System.out.println("edit appointment button clicked!");
+    }
+
+    @FXML
+    public void handleAppointmentReport() {
+        System.out.println("appointment report button clicked!");
+    }
+
+    @FXML
+    public void handleClientSchedule() {
+        System.out.println("client schedule button clicked!");
+    }
+
+    @FXML
+    public void handleDBLog() {
+        System.out.println("DB log button clicked!");
+    }
+
+
+
+
+    @FXML
     public void handleLogout(ActionEvent e) throws IOException {
         ((Node) (e.getSource())).getScene().getWindow().hide();
         Stage stage = new Stage();
