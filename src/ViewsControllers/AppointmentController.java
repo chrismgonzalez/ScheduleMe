@@ -1,4 +1,4 @@
-package appointment.views;
+package ViewsControllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

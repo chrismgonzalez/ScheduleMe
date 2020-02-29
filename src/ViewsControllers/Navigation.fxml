@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="appointment.views.NavigationController">
+<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewsControllers.NavigationController">
    <children>
       <Label alignment="CENTER" layoutX="27.0" layoutY="8.0" prefHeight="42.0" prefWidth="115.0" text="Dashboard" textAlignment="CENTER">
          <font>

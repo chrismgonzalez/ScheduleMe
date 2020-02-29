@@ -1,4 +1,4 @@
-package appointment.views;
+package ViewsControllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,7 +56,7 @@ public class NavigationController implements Initializable {
     public void handleLogout(ActionEvent e) throws IOException {
         ((Node) (e.getSource())).getScene().getWindow().hide();
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginView.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
