@@ -4,10 +4,7 @@ import DAO.UserDao;
 import DAO.UserDaoImpl;
 import Utils.UserSettings;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 
 import java.util.ResourceBundle;
@@ -23,13 +20,16 @@ public class LoginController extends InnerController {
     private ResourceBundle rb;
 
     public void initialize() {
-        rb = ResourceBundle.getBundle("Resources.login", UserSettings.locale);
+        rb = ResourceBundle.getBundle("Resources.Login", UserSettings.locale);
         populateText();
     }
 
     private void populateText() {
         userNameLabel.setText(rb.getString("username"));
         passwordLabel.setText(rb.getString("password"));
+        loginButton.setText(rb.getString("login"));
+        loginMessageLabel.setText(rb.getString("loginMessage"));
+
     }
 
     public void login() {

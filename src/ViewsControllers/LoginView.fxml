@@ -27,8 +27,8 @@
                <children>
                   <Label fx:id="userNameLabel" alignment="CENTER" prefHeight="17.0" prefWidth="143.0" text="Username" />
                   <Label fx:id="passwordLabel" alignment="CENTER" prefHeight="17.0" prefWidth="138.0" text="Password" GridPane.rowIndex="1" />
-                  <TextField fx:id="userNameTextField" prefHeight="25.0" prefWidth="166.0" promptText="Username" GridPane.columnIndex="1" />
-                  <PasswordField fx:id="passwordField" promptText="Password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="userNameTextField" prefHeight="25.0" prefWidth="166.0" GridPane.columnIndex="1" />
+                  <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" text="Login" />
