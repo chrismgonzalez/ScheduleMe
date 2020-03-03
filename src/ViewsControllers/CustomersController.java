@@ -5,10 +5,11 @@ import DataModels.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 
 import java.util.Collections;
-
+import java.util.stream.Collectors;
 
 
 public class CustomersController extends InnerController {
@@ -49,6 +50,7 @@ public class CustomersController extends InnerController {
     public void initialize() {
         allCustomers = FXCollections.observableArrayList();
         customersListView.setItems(allCustomers);
+        //insert comment about lambda expression here
         customersListView.getOnMouseClicked(e -> {
             if(customersListView.getSelectionModel().getSelectedItem() != null) {
                 populateSelectedCustomerLabelText();
@@ -56,6 +58,26 @@ public class CustomersController extends InnerController {
             }
         });
         refreshCustomersList();
+    }
+
+    public void searchCustomers() {
+        String searchText = searchCustomersTextField.getText().trim().toLowerCase();
+        if (searchText.equals("")) {
+            customersListView.setItems(allCustomers);
+        } else {
+            //lambda expression here
+            ObservableList<Customer> customersFound = FXCollections.observableArrayList(
+              allCustomers.stream().filter(c -> c.getCustomerName().trim().toLowerCase().contains(searchText))
+                    .sorted()
+                    .collect(Collectors.toList())
+            );
+            customersListView.setItems(customersFound);
+        }
+    }
+
+    public void  addNewCustomer() {
+        Parent root;
+
     }
 
 }

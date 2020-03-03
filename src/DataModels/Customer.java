@@ -2,7 +2,7 @@ package DataModels;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class Customer implements Comparable {
+public class Customer implements Comparable<Customer> {
     private int customerId;
     private SimpleStringProperty customerName;
     private Integer addressId;
