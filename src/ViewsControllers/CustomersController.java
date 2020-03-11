@@ -50,7 +50,7 @@ public class CustomersController extends InnerController {
     public void initialize() {
         allCustomers = FXCollections.observableArrayList();
         customersListView.setItems(allCustomers);
-        //insert comment about lambda expression here
+        //Lambda expression
         customersListView.getOnMouseClicked(e -> {
             if(customersListView.getSelectionModel().getSelectedItem() != null) {
                 populateSelectedCustomerLabelText();
@@ -80,4 +80,54 @@ public class CustomersController extends InnerController {
 
     }
 
+    public void cancelEditSelectedCustomer() {
+
+    }
+
+    public void saveEditSelectedCustomer() {
+        //set fields
+        //validate input
+        //get customer details
+        //update country
+        //update city
+        //update address
+        //update customer
+        //refresh customer data and exit the edit view
+    }
+
+    private DetailedCustomer getSelectedCustomerDetail() {
+
+    }
+
+    private void refreshCustomersList() {
+
+    }
+
+    private void clearCustomerSelection() {
+
+    }
+
+    private void populateSelectedCustomerLabelText() {
+
+    }
+
+    private void populateSelectedCustomerEditableFields() {
+
+    }
+
+    private void populateSelectedCustomerAppointments() {
+
+    }
+
+    private void toggleDisplayEditCustomerUiElements(boolean isOn) {
+
+    }
+
+    public void addAppointment() {
+
+    }
+
+    public void viewAppointment() {
+
+    }
 }
