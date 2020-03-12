@@ -1,6 +1,6 @@
 package ViewsControllers;
 
-import DAO.CustomerDAO;
+import DAO.*;
 import DataModels.*;
 import Utils.InputValidator;
 import javafx.fxml.FXML;
@@ -49,13 +49,35 @@ public class AddCustomerController {
             notificationWindow.launchAndWait();
             return;
         }
+        //save country
+        Country country;
+        CountryDao countryDao = new CountryDaoImp();
+        country = countryDao.getCountryByName(countryName);
+        if (country == null) {
+            country = countryDao.addCountry(countryName);
+        }
+
+        //save city
+        City city;
+        CityDao cityDao = new CityDaoImp();
+        city = cityDao.getCityByNameAndCountryId(cityName, country.getCountryId());
+        if (city == null) {
+            city = cityDao.addCity(cityName, country.getCountryId());
+        }
+
+        //save address
+        Address address;
+        AddressDao addressDao = new AddressDaoImp();
+        address = addressDao.getAddressByAttributes(addressLine1, addressLine2, city.getCityId(), postalCode, phone);
+        if (address == null) {
+            address = addressDao.addAddress(addressLine1, addressLine2, city.getCityId(), postalCode, phone);
+        }
 
         //save customer
         CustomerDAO customerDao = new CustomerDaoImp();
         addedCustomer = customerDao.addCustomer(customerName, address.getAddressId(), isActive);
 
-        //close window request
-
+        //close window request, return to main UI
         Window window = saveNewCustomerButton.getScene().getWindow();
         window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
