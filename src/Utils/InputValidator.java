@@ -8,6 +8,7 @@ public class InputValidator {
         }
     }
     //validate appointment scheduling to not occur in off hours
+
     //validate no overlapping appointments
     //invalid login text
     public static boolean invalidLoginText(String text) {

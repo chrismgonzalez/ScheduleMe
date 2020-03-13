@@ -74,7 +74,7 @@ public class AddCustomerController {
         }
 
         //save customer
-        CustomerDAO customerDao = new CustomerDaoImp();
+        CustomerDao customerDao = new CustomerDaoImp();
         addedCustomer = customerDao.addCustomer(customerName, address.getAddressId(), isActive);
 
         //close window request, return to main UI
