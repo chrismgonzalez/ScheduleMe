@@ -21,7 +21,7 @@ public class City {
         this.cityId = cityId;
     }
 
-    public String city() {
+    public String getCity() {
         return city;
     }
 

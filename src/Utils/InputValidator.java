@@ -7,7 +7,36 @@ public class InputValidator {
             throw new IllegalArgumentException("The data you have entered is invalid or incomplete.");
         }
     }
-    //validate appointment scheduling to not occur in off hours
+
+    public static String validateHourInput(String hour) throws IllegalArgumentException {
+        String validHourString = hour.length() == 1 ? "0" + hour : hour;
+        try {
+            int hourInt = Integer.parseInt(validHourString);
+            if (hourInt < 1 || hourInt > 12) {
+                throw new IllegalArgumentException();
+            }
+        } catch(IllegalArgumentException e) {
+            throw new IllegalArgumentException("Appointment start or end time is invalid!");
+        }
+        return validHourString;
+    }
+
+    public static String validateMinuteInput(String minute) throws IllegalArgumentException {
+        String validMinuteString = minute;
+        validMinuteString = validMinuteString.length() == 0 ? "00" : validMinuteString;
+        validMinuteString = validMinuteString.length() == 1 ? "0" + validMinuteString : validMinuteString;
+        try {
+            int minuteInt = Integer.parseInt(validMinuteString);
+            if (minuteInt < 0 || minuteInt >= 60) {
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Appointment start or end time is invalid.");
+        }
+        return validMinuteString;
+    }
+
+
 
     //validate no overlapping appointments
     //invalid login text

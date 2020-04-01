@@ -37,7 +37,7 @@ public class AddressDaoImp implements AddressDao {
     }
 
     @Override
-    public Address getAddressByAttributes(String addressLine1, String addressLine2, int cityId, String postalCode, String Phone) {
+    public Address getAddressByAttributes(String addressLine1, String addressLine2, int cityId, String postalCode, String phone) {
         Address address = null;
         String query = "select addressId from address " +
                         "where address=? and address2=? and cityId=? and postalCode=? and phone=?";
@@ -81,7 +81,7 @@ public class AddressDaoImp implements AddressDao {
     }
 
     @Override
-    public boolean updateAddress(int addressId, String addressLine1, String addressLine2, int cityId, String postalCode, String Phone) {
+    public boolean updateAddress(int addressId, String addressLine1, String addressLine2, int cityId, String postalCode, String phone) {
         String query = "update address set address=?, address2=?, cityId=?, postalCode=?, phone=? " +
                 "where addressId=?";
         try {
@@ -113,7 +113,7 @@ public class AddressDaoImp implements AddressDao {
     }
 
     @Override
-    public Address addAddress(String address, String address2, int cityId, String postalCode, String phone) {
+    public Address addAddress(String addressLine1, String addressLine2, int cityId, String postalCode, String phone) {
         Address address = null;
         String query = "insert into address (addressId, address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdate, lastUpdateBy) " +
                 "values(?, ?, ?, ?, ?, ?, now(), ?, now(), ?)";
