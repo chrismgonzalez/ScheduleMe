@@ -56,12 +56,12 @@ public class CustomersController extends InnerController {
         allCustomers = FXCollections.observableArrayList();
         customersListView.setItems(allCustomers);
         //Lambda expression
-        customersListView.getOnMouseClicked(e -> {
+        /*customersListView.getOnMouseClicked(e -> {
             if (customersListView.getSelectionModel().getSelectedItem() != null) {
                 populateSelectedCustomerLabelText();
                 populateSelectedCustomerAppointments();
             }
-        });
+        });*/
         refreshCustomersList();
     }
 
@@ -134,8 +134,25 @@ public class CustomersController extends InnerController {
         //refresh customer data and exit the edit view
     }
 
-    private DetailedCustomer getSelectedCustomerDetail() {
+    public void requestDeleteCustomer() {
+        Customer selectedCustomer = customersListView.getSelectionModel().getSelectedItem();
+        if (selectedCustomer == null) {
+            return;
+        }
+        /*String confirmationMessage = "Are you sure you want to permanently remove this customer?\n\n" + selectedCustomer.getCustomerName() + "\n\n\n";
+        boolean deleteConfirmed = new ConfirmationWindow().display(confirmationMessage);
+        if (deleteConfirmed) {
+            CustomerDao customerDao = new CustomerDaoImp();
+            customerDao.deleteCustomer(selectedCustomer);
+            clearCustomerSelection();
+            refreshCustomersList();
+        }*/
+    }
 
+    private DetailedCustomer getSelectedCustomerDetail() {
+        Customer selectedCustomer = customersListView.getSelectionModel().getSelectedItem();
+        DetailedCustomerDao detailedCustomerDao = new DetailedCustomerDaoImp();
+        return detailedCustomerDao.getCustomerDetail(selectedCustomer);
     }
 
     private void refreshCustomersList() {
