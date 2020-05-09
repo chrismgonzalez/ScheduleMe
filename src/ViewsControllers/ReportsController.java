@@ -74,7 +74,7 @@ public class ReportsController extends InnerController {
         ObservableList<Month> monthList = FXCollections.observableArrayList(Month.values());
         monthListView.setItems(monthList);
         // year selection
-        ObservableList<Integer> yearList = FXCollections.observableArrayList(2019, 2020, 2021);
+        ObservableList<Integer> yearList = FXCollections.observableArrayList(2020, 2021, 2022, 2023, 2024);
         yearListView.setItems(yearList);
     }
 
@@ -85,9 +85,8 @@ public class ReportsController extends InnerController {
         selectedUsers.forEach(u -> selectedUsersIdsNames.put(u.getUserId(), u.getUserName()));
         ObservableList<Month> selectedMonths = monthListView.getSelectionModel().getSelectedItems();
         ObservableList<Integer> selectedYears = yearListView.getSelectionModel().getSelectedItems();
-        // filter appointments -> if the database were to grow significantly, this stream could be made parallel
-        // making it parallel would require including an intermediate step to sort the data before adding to list
-        // so the for now the overhead from sorting and multi-threading likely outweighs the benefits
+
+        //if the data grew significantly, we would want to add a filter to make the data easier to search, but that is not needed at this point in the program
         return appointments.stream()
                 .filter(a -> selectedUsersIdsNames.containsKey(a.getUserId()))
                 .filter(a -> selectedMonths.contains(a.getStart().getMonth()))
@@ -126,7 +125,7 @@ public class ReportsController extends InnerController {
                         Collectors.mapping(
                                 Appointment::getType,
                                 Collectors.toSet())));
-        // couldn't figure out how to do everything in one stream (which is probably good for readability)
+
         Map<YearMonth, Integer> appointmentTypeCounts = new HashMap<>();
         appointmentsByMonth.forEach((k, v) -> appointmentTypeCounts.put(k, v.size()));
         // Build Report

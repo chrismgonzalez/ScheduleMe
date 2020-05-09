@@ -13,10 +13,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class NavigationController implements Initializable {
+public class DashboardController implements Initializable {
     @FXML
-    public void handleEditCustomer() {
-        System.out.println("edit customer button clicked!");
+    public void handleAddEditDeleteCustomer() {
+
     }
 
     @FXML

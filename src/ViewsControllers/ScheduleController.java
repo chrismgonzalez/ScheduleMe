@@ -51,7 +51,7 @@ public class ScheduleController extends InnerController {
     }
 
     public void checkForUpcomingAppointments(Duration duration) {
-        // check for appointments occurring within the next [duration] (e.g. within the next 15 minutes).
+        // checks for appointments occuring within the next 15 minutes of login
         AppointmentDao appointmentDao = new AppointmentDaoImp();
         ObservableList<Appointment> upcomingAppointments = appointmentDao.getAppointmentsStartingInInterval(
                 LocalDateTime.now(),
@@ -167,7 +167,7 @@ public class ScheduleController extends InnerController {
         for (CalendarDay day : calendar.getCalendarDays()) {
             // set on-click behavior
             if (count.getOrDefault(day.getDate(), 0L) > 0 && day.getDate().getMonth().equals(calendar.getMonth().getMonth())) {
-                day.setStyle("-fx-background-color: skyblue; -fx-border-color: black; -fx-border-width: 0.5");
+                day.setStyle("-fx-background-color: #ebae66; -fx-border-color: grey; -fx-border-width: 0.5");
                 day.setOnMousePressed(e -> {
                     day.setStyle("-fx-background-color: black; -fx-border-color: black; -fx-border-width: 0.5");
                     populateAppointmentsListView(day.getDate());

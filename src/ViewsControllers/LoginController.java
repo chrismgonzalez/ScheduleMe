@@ -7,6 +7,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.time.Duration;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class LoginController extends InnerController {
@@ -39,16 +49,51 @@ public class LoginController extends InnerController {
         Integer userId = userDao.getUserIdByUserNameAndPassword(userName, password);
         if (userId == null) {
             displayErrorText(rb.getString("error_invalid"));
+            loginLogger(false, userName);
             return;
         }
+        loginLogger(true, userName);
         UserSettings.userId = userId;
         UserSettings.userName = userName;
         this.outerController.toggleUiAccessOn();
+        ScheduleController scheduleController = this.outerController.launchScheduleScene();
+        scheduleController.checkForUpcomingAppointments(Duration.ofMinutes(15));
 
     }
 
     private void displayErrorText(String errorMessage) {
         loginMessageLabel.setText(errorMessage);
         loginMessageLabel.setTextFill(Color.RED);
+    }
+
+    private ZonedDateTime loginLogger(boolean success, String userName) {
+        ZonedDateTime loginDateTime = ZonedDateTime.now(UserSettings.USER_TIME_ZONE);
+        Path logPath = Paths.get("loginLogger.txt");
+        //if the log file does not exist, then create one
+
+        if(!Files.exists(logPath)) {
+            try {
+                Files.createFile(logPath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //create a login entry into the log
+
+        String entry;
+        String loggedDateTime = loginDateTime.format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
+        if(success) {
+            entry = "The user " + userName + " successful logged in at " + loggedDateTime + "\n";
+        } else {
+            entry = "The user " + userName + " failed a login at " + loggedDateTime + "\n";
+        }
+
+        //write the entry into the log
+        try(BufferedWriter writer = Files.newBufferedWriter(logPath, StandardCharsets.UTF_8, StandardOpenOption.APPEND)) {
+            writer.write(entry);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return loginDateTime;
     }
 }
