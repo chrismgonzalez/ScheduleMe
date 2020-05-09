@@ -14,7 +14,8 @@ import java.time.format.FormatStyle;
 public class InputValidator {
     //input validation
     public static void validateCustomerInput(String customerName, String phone, String addressLine1, String addressLine2, String cityName, String postalCode, String countryName) throws IllegalArgumentException {
-        if (customerName.equals("") || phone.equals("") || addressLine1.equals("") || addressLine2.equals("") || cityName.equals("") || postalCode.equals("") || countryName.equals("")) {
+        //address line 2 does not have validation, but can be added at a future time
+        if (customerName.equals("") || phone.equals("") || addressLine1.equals("") || cityName.equals("") || postalCode.equals("") || countryName.equals("")) {
             throw new IllegalArgumentException("The data you have entered is invalid or incomplete.");
         }
     }
