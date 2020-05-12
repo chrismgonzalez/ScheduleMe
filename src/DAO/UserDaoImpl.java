@@ -15,7 +15,7 @@ public class UserDaoImpl implements UserDao {
     public Integer getUserIdByUserNameAndPassword(String userName, String password) {
         Integer userId = null;
         try {
-            String query = "select userId, username from user " +
+            String query = "select userId, username from users " +
                     "where userName= ? and " +
                     "password= ? and " +
                     "active > 0" + " and " +

@@ -13,7 +13,7 @@ public class DbConnection {
     private static final String PASSWORD = "53688693143"; //password
     public static final ZoneId DB_TIME_ZONE = ZoneId.of("UTC");
 
-    // singleton pattern instantiation
+    // create an instance of the singleton pattern
 
     private static DbConnection sInstance;
     private final Connection connection;
@@ -28,7 +28,7 @@ public class DbConnection {
         catch(SQLException e)
         {
             e.printStackTrace();
-            System.out.println("Not Connected");
+            System.out.println("Error: The database did not connect");
         }
         return conn;
     }
@@ -55,7 +55,7 @@ public class DbConnection {
     public void close() {
         try {
             connection().close();
-            System.out.println("Disconnected from database!");
+            System.out.println("Database has been disconnected!");
         }
         catch (SQLException e) {
             e.printStackTrace();

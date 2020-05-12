@@ -7,8 +7,10 @@ public class Login_en extends ListResourceBundle {
         return new Object[][] {
                 { "username", "Username" },
                 { "password", "Password"},
+                { "login", "Login"},
                 { "error_invalid", "Invalid username or password"},
-                { "close", "close"}
+                { "close", "close"},
+                { "loginMessage", "Welcome"}
         };
     }
 }
