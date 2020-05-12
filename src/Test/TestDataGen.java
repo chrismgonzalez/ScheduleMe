@@ -23,29 +23,29 @@ public class TestDataGen {
 
     public boolean populateCityTable() {
         String query = "INSERT INTO `city` VALUES \n" +
-                "(1,'New York',1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
-                "(2,'Los Angeles',1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
-                "(3,'Toronto',2,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
+                "(1,'Fort Worth',1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
+                "(2,'Ft. Lauderdale',1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
+                "(3,'Tampa',2,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
                 "(4,'Vancouver',2,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
-                "(5,'Oslo',3,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test');";
+                "(5,'Bangladesh',3,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test');";
         int result = SqlHelper.getInstance().update(query);
         return result > 0;
     }
 
     public boolean populateAddressTable() {
         String query = "INSERT INTO `address` VALUES \n" +
-                "(1,'123 Main','',1,'11111','555-1212','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
-                "(2,'123 Elm','',3,'11112','555-1213','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
-                "(3,'123 Oak','',5,'11113','555-1214','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test');";
+                "(1,'123 5th Street','',1,'11111','555-1212','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
+                "(2,'136 Half Moon','',3,'11112','555-1213','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
+                "(3,'123 Oakmont','',5,'11113','555-1214','2019-01-01 00:00:00','test','2019-01-01 00:00:00','test');";
         int result = SqlHelper.getInstance().update(query);
         return result > 0;
     }
 
     public boolean populateCustomerTable() {
         String query = "INSERT INTO `customer` VALUES \n" +
-                "(1,'John Doe',1,1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
-                "(2,'Alfred E Newman',2,1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
-                "(3,'Ina Prufung',3,1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test');";
+                "(1,'Jeff Goldblum',1,1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
+                "(2,'Tina Turner',2,1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test'),\n" +
+                "(3,'Kygo Avicii',3,1,'2019-01-01 00:00:00','test','2019-01-01 00:00:00','test');";
         int result = SqlHelper.getInstance().update(query);
         return result > 0;
     }
