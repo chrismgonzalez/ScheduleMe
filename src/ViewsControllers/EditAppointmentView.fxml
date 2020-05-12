@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewsControllers.EditAppointmentController">
+<AnchorPane prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewsControllers.EditAppointmentController">
     <children>
         <TitledPane alignment="CENTER" collapsible="false" prefHeight="600.0" prefWidth="600.0" text="View or Change Appointment" textAlignment="CENTER">
             <content>
@@ -87,17 +76,26 @@
                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                             </padding>
                             <children>
-                                <Button fx:id="deleteAppointmentButton" mnemonicParsing="false" onAction="#requestDeleteAppointment" text="Delete Appointment" />
+                                <Button fx:id="deleteAppointmentButton" mnemonicParsing="false" onAction="#requestDeleteAppointment" style="-fx-background-color: lightblue;" text="Delete Appointment">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
                                 <StackPane prefHeight="150.0">
                                     <children>
-                                        <Button fx:id="editAppointmentButton" mnemonicParsing="false" onAction="#beginEditAppointment" text="Edit Appointment" />
+                                        <Button fx:id="editAppointmentButton" mnemonicParsing="false" onAction="#beginEditAppointment" style="-fx-background-color: lightblue;" text="Edit Appointment">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Button>
                                         <Button fx:id="saveAppointmentButton" disable="true" layoutX="54.0" layoutY="10.0" mnemonicParsing="false" onAction="#saveEditAppointment" text="Save Appointment" visible="false" />
                                     </children>
                                 </StackPane>
                                 <StackPane prefHeight="150.0">
                                     <children>
                                         <Button fx:id="cancelEditAppointmentButton" disable="true" mnemonicParsing="false" onAction="#endEditAppointment" text="Cancel" visible="false" />
-                                        <Button fx:id="closeAppointmentButton" layoutX="84.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeAppointment" text="Close" />
+                                        <Button fx:id="closeAppointmentButton" layoutX="84.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeAppointment" style="-fx-background-color: lightblue;" text="Close">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Button>
                                     </children>
                                 </StackPane>
                             </children>
@@ -111,6 +109,9 @@
                     </opaqueInsets>
                 </VBox>
             </content>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
         </TitledPane>
     </children>
 </AnchorPane>
