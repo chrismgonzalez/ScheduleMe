@@ -8,9 +8,9 @@
    <children>
       <VBox alignment="CENTER" layoutX="166.0" layoutY="56.0" prefHeight="288.0" prefWidth="269.0" spacing="30.0">
          <children>
-            <Label fx:id="loginMessageLabel" text="Welcome">
+            <Label fx:id="loginMessageLabel" alignment="CENTER" prefHeight="72.0" prefWidth="244.0" text="Welcome">
                <font>
-                  <Font name="Arial" size="34.0" />
+                  <Font name="Arial" size="12.0" />
                </font></Label>
             <GridPane alignment="CENTER" prefHeight="90.0" prefWidth="269.0">
                <columnConstraints>
