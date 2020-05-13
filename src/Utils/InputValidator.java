@@ -92,7 +92,7 @@ public class InputValidator {
         AppointmentDao appointmentDao = new AppointmentDaoImp();
         ObservableList<Appointment> appointmentsWithin = appointmentDao.getAppointmentsOverlappingInterval(appointmentStart, appointmentEnd, UserSettings.userId);
         if (appointmentsWithin.size() > 0) {
-            throw new IllegalArgumentException("Another appointment is already scheduled during this time. Please schedule appointment for a different date or time.");
+            throw new IllegalArgumentException("Whoops! Looks like you tried to schedule another appointment on top of an already existing one. Let's try that again!");
         }
     }
     //invalid login text

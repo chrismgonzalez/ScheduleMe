@@ -133,7 +133,7 @@ public class EditAppointmentController {
         }
         endEditAppointment();
     }
-
+//delete an appointment
     public void requestDeleteAppointment() {
         String confirmationMessage = "Are you sure you want to permanently remove this appointment?\n\n\n";
         boolean deleteConfirmed = new ConfirmationWindow().display(confirmationMessage);

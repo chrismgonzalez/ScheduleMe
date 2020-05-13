@@ -49,9 +49,9 @@ public class ScheduleController extends InnerController {
         setUpCalendar();
         isMonth = true;
     }
-
+    // checks for appointments that start within the next 15 minutes of login
     public void checkForUpcomingAppointments(Duration duration) {
-        // checks for appointments occuring within the next 15 minutes of login
+
         AppointmentDao appointmentDao = new AppointmentDaoImp();
         ObservableList<Appointment> upcomingAppointments = appointmentDao.getAppointmentsStartingInInterval(
                 LocalDateTime.now(),
@@ -65,7 +65,7 @@ public class ScheduleController extends InnerController {
             notificationWindow.launch();
         }
     }
-
+//add an appointment
     public void addAppointment() {
         Parent root;
         AddAppointmentController controller;
@@ -129,7 +129,7 @@ public class ScheduleController extends InnerController {
         Collections.sort(selectedAppointments);
         appointmentsListView.setItems(selectedAppointments);
     }
-
+//toggle the functionality between a week view and a month view
     private void toggleWeekMonth(String choice) {
         if (choice.equals(weekMonthChoices.get(0)) && !isMonth) {
             calendarAnchorPane.getChildren().remove(week);

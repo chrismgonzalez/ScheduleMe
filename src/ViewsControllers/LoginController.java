@@ -41,7 +41,7 @@ public class LoginController extends InnerController {
         loginMessageLabel.setText(rb.getString("loginMessage"));
 
     }
-
+    //login to program
     public void login() {
         String userName = userNameTextField.getText().trim();
         String password = passwordField.getText().trim();
@@ -49,9 +49,11 @@ public class LoginController extends InnerController {
         Integer userId = userDao.getUserIdByUserNameAndPassword(userName, password);
         if (userId == null) {
             displayErrorText(rb.getString("error_invalid"));
+            //log the login attempt and write to log file
             loginLogger(false, userName);
             return;
         }
+        //log the login attempt and write to log file
         loginLogger(true, userName);
         UserSettings.userId = userId;
         UserSettings.userName = userName;
@@ -65,6 +67,8 @@ public class LoginController extends InnerController {
         loginMessageLabel.setText(errorMessage);
         loginMessageLabel.setTextFill(Color.RED);
     }
+    /*upon a login attempt, either failed or successful, the user, date, and time data will be logged to the file
+     * "loginLogger.txt", please look for this in the root directory of the project file */
 
     private ZonedDateTime loginLogger(boolean success, String userName) {
         ZonedDateTime loginDateTime = ZonedDateTime.now(UserSettings.USER_TIME_ZONE);
@@ -83,9 +87,9 @@ public class LoginController extends InnerController {
         String entry;
         String loggedDateTime = loginDateTime.format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
         if(success) {
-            entry = "The user " + userName + " successful logged in at " + loggedDateTime + "\n";
+            entry = "User " + userName + " completed a successful login at " + loggedDateTime + "\n";
         } else {
-            entry = "The user " + userName + " failed a login at " + loggedDateTime + "\n";
+            entry = "User " + userName + " failed a login attempt at " + loggedDateTime + "\n";
         }
 
         //write the entry into the log

@@ -12,8 +12,6 @@ import javafx.stage.Stage;
 public class NotificationWindow {
     private String text;
 
-    public NotificationWindow() {}
-
     public NotificationWindow(String text) {
         this.text = text;
     }

@@ -86,14 +86,14 @@ public class ReportsController extends InnerController {
         ObservableList<Month> selectedMonths = monthListView.getSelectionModel().getSelectedItems();
         ObservableList<Integer> selectedYears = yearListView.getSelectionModel().getSelectedItems();
 
-        //if the data grew significantly, we would want to add a filter to make the data easier to search, but that is not needed at this point in the program
+
         return appointments.stream()
                 .filter(a -> selectedUsersIdsNames.containsKey(a.getUserId()))
                 .filter(a -> selectedMonths.contains(a.getStart().getMonth()))
                 .filter(a -> selectedYears.contains(a.getStart().getYear()))
                 .collect(Collectors.toList());
     }
-
+    //list schedule by consultant
     private Report consultantScheduleReport() {
         List<Appointment> filteredAppointments = filterAppointments();
         // get lists of included users
@@ -115,10 +115,9 @@ public class ReportsController extends InnerController {
         }
         return new Report(columnNames, reportData);
     }
-
+    // calculate number of appointment types [unique]
     private Report appointmentUniqueTypesReport() {
         List<Appointment> filteredAppointments = filterAppointments();
-        // calculate number of appointment types
         Map<YearMonth, Set<String>> appointmentsByMonth = filteredAppointments.stream()
                 .collect(Collectors.groupingBy(
                         a -> YearMonth.of(a.getStart().getYear(), a.getStart().getMonth()),
@@ -140,10 +139,9 @@ public class ReportsController extends InnerController {
         }
         return new Report(columnNames, reportData);
     }
-
+    // calculate number of appointment types
     private Report appointmentCountByTypeReport() {
         List<Appointment> filteredAppointments = filterAppointments();
-        // calculate number of appointment types
         Map<String, Long> appointmentTypeCounts = filteredAppointments.stream().collect(Collectors.groupingBy(Appointment::getType, Collectors.counting()));
         // Build Report
         List<List<Object>> reportData = new ArrayList<>();

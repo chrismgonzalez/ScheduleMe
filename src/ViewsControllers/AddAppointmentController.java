@@ -80,8 +80,7 @@ public class AddAppointmentController {
         String type = appointmentTypeTextField.getText();
         String description = appointmentDescriptionTextArea.getText();
 
-        /* if customerChoiceBox is disabled, the AddAppointmentView was launched from the customer page
-        otherwise, the AddAppointmentView was launched from the schedule screen and the customer is selected in the choice box */
+
         if (!customerChoiceBox.isDisabled()) {
             if (customerChoiceBox.getValue() == null) {
                 NotificationWindow notificationWindow = new NotificationWindow("Select a customer from the drop down menu.");
@@ -112,7 +111,7 @@ public class AddAppointmentController {
         AppointmentDao appointmentDao = new AppointmentDaoImp();
         addedAppointment = appointmentDao.addAppointment(customer.getCustomerId(), UserSettings.userId, title, description, location, contact, type, url, startDateTime, endDateTime);
 
-        // return to main ui by firing close request event
+        //close window and return to main UI
         Window window = addNewAppointmentButton.getScene().getWindow();
         window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
     }

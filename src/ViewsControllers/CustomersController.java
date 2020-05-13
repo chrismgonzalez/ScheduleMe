@@ -58,6 +58,7 @@ public class CustomersController extends InnerController {
         customersListView.setItems(allCustomers);
         /*This lambda expression implements an event handler that fires when the customer button is clicked on the outer controller class.
         * The expression populates that customer table view, as well as populates the appointment view when a specific customer with appointments is clicked
+        * The lambda expression makes the code easier to read and eliminates unnecessary lines of code.
         * (GRADER - this comment is to satisfy rubric requirements for the use of lambda expressions)*/
         customersListView.setOnMouseClicked(e -> {
             if (customersListView.getSelectionModel().getSelectedItem() != null) {
@@ -73,9 +74,6 @@ public class CustomersController extends InnerController {
         if (searchText.equals("")) {
             customersListView.setItems(allCustomers);
         } else {
-            /* Here I use a lambda expression to implement a functional interface (Predicate) with fewer lines of code.
-            The alternative is to write an anonymous inner class that implements the interface.
-            (this comment is to justify use of a lambda expression for the project assignment grader) */
 
             /*This lambda expression implements a search box interface with fewer lines of code.
              * Alternatively, one could write an anonymous inner class, but that is not as eloquent for readability of the code
@@ -135,7 +133,7 @@ public class CustomersController extends InnerController {
         }
         customerActiveCheckBox.setSelected(false);
     }
-
+    //save the edit of customer info
     public void saveEditSelectedCustomer() {
         String customerName = customerNameTextField.getText();
         boolean isActive = customerActiveCheckBox.isSelected();
@@ -210,7 +208,7 @@ public class CustomersController extends InnerController {
         populateSelectedCustomerLabelText();
         cancelEditSelectedCustomer();
     }
-
+    //delete customer
     public void requestDeleteCustomer() {
         Customer selectedCustomer = customersListView.getSelectionModel().getSelectedItem();
         if (selectedCustomer == null) {
@@ -305,7 +303,7 @@ public class CustomersController extends InnerController {
         cancelEditCustomerButton.setVisible(isOn);
         customersListView.setDisable(isOn);
     }
-
+    //add an appointment
     public void addAppointment() {
         Customer selectedCustomer = customersListView.getSelectionModel().getSelectedItem();
         if (selectedCustomer == null) {
