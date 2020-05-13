@@ -3,6 +3,8 @@ package Utils;
 import java.time.ZoneId;
 import java.util.Locale;
 
+
+//retrieve the user timezone and locale
 public class UserSettings {
     public static String userName;
     public static int userId;
