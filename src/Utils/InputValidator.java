@@ -33,7 +33,7 @@ public class InputValidator {
             throw new IllegalArgumentException("Postal code must only be five numeric digits");
         }
         //validate country field to only contain letters (capital and lowercase)
-        Pattern countryPattern = Pattern.compile("[a-z][A-Z]");
+        Pattern countryPattern = Pattern.compile("^[a-zA-Z]*$");
         Matcher countryMatcher = countryPattern.matcher(countryName);
         if(!countryMatcher.matches()) {
             throw new IllegalArgumentException("Country name should only contain letters");
