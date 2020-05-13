@@ -74,7 +74,7 @@ public class ReportsController extends InnerController {
         ObservableList<Month> monthList = FXCollections.observableArrayList(Month.values());
         monthListView.setItems(monthList);
         // year selection
-        ObservableList<Integer> yearList = FXCollections.observableArrayList(2020, 2021, 2022, 2023, 2024);
+        ObservableList<Integer> yearList = FXCollections.observableArrayList(2019, 2020, 2021, 2022, 2023, 2024);
         yearListView.setItems(yearList);
     }
 

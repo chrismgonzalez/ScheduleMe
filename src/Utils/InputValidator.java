@@ -10,15 +10,37 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class InputValidator {
     //input validation
     public static void validateCustomerInput(String customerName, String phone, String addressLine1, String addressLine2, String cityName, String postalCode, String countryName) throws IllegalArgumentException {
         //address line 2 does not have validation, but can be added at a future time
-        if (customerName.equals("") || phone.equals("") || addressLine1.equals("") || cityName.equals("") || postalCode.equals("") || countryName.equals("")) {
+        if (customerName.equals("") || addressLine1.equals("") || cityName.equals("") || postalCode.equals("") || countryName.equals("")) {
             throw new IllegalArgumentException("The data you have entered is invalid or incomplete.");
         }
+        //validate phone numbers for the format xxx-xxxx [numeric digits only]
+        Pattern phonePattern = Pattern.compile("\\d{3}-\\d{4}");
+        Matcher phoneMatcher = phonePattern.matcher(phone);
+        if (!phoneMatcher.matches()) {
+            throw new IllegalArgumentException("Phone number must be in the format xxx-xxxx");
+        }
+        //validate postal code to be 5 numeric digits
+        Pattern postalCodePattern = Pattern.compile("\\d{5}");
+        Matcher postalCodeMatcher = postalCodePattern.matcher(postalCode);
+        if(!postalCodeMatcher.matches()) {
+            throw new IllegalArgumentException("Postal code must only be five numeric digits");
+        }
+        //validate country field to only contain letters (capital and lowercase)
+        Pattern countryPattern = Pattern.compile("[a-z][A-Z]");
+        Matcher countryMatcher = countryPattern.matcher(countryName);
+        if(!countryMatcher.matches()) {
+            throw new IllegalArgumentException("Country name should only contain letters");
+        }
+
     }
+
 
     public static String validateHourInput(String hour) throws IllegalArgumentException {
         String validHourString = hour.length() == 1 ? "0" + hour : hour;
